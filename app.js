@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-
 const videoGames = [
   { id: 1, title: "Pong", year: 1972, platform: "Arcade" },
   { id: 2, title: "Space Invaders", year: 1978, platform: "Arcade" },
@@ -23,17 +22,18 @@ const videoGames = [
   { id: 17, title: "Final Fantasy VII", year: 1997, platform: "PlayStation" },
   { id: 18, title: "GoldenEye 007", year: 1997, platform: "N64" },
   { id: 19, title: "The Legend of Zelda: Ocarina of Time", year: 1998, platform: "N64" },
-  { id: 20, title: "Half-Life", year: 1998, platform: "PC" }
+  { id: 20, title: "Half-Life", year: 1998, platform: "PC" },
+  { id: 21, title: "Pokemon Red", year: 1996, platform: "Game Boy" } 
 ];
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the Video Game API! Use /games to see the data.');
+});
+
 app.get('/games', (req, res) => {
-  res.json(videoGames); 
+  res.json(videoGames);
 });
 
 app.listen(port, () => {
   console.log(`API running at http://localhost:${port}`);
 });
-
-app.get('/', (req, res) => {
-    res.send('Welcome to the Video Game API! Use /games to see the data.');
-  });
